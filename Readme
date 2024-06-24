@@ -1,0 +1,111 @@
+// Operation
+
+query ExampleQuery {
+  games {
+    platform
+    id,title
+  }
+}
+
+//Response
+
+{
+  "data": {
+    "games": [
+      {
+        "platform": [
+          "Switch"
+        ],
+        "id": "1",
+        "title": "Zelda, Tears of the Kingdom"
+      },
+      {
+        "platform": [
+          "PS5",
+          "Xbox"
+        ],
+        "id": "2",
+        "title": "Final Fantasy 7 Remake"
+      },
+      {
+        "platform": [
+          "PS5",
+          "Xbox",
+          "PC"
+        ],
+        "id": "3",
+        "title": "Elden Ring"
+      },
+      {
+        "platform": [
+          "Switch"
+        ],
+        "id": "4",
+        "title": "Mario Kart"
+      },
+      {
+        "platform": [
+          "PS5",
+          "Xbox",
+          "PC"
+        ],
+        "id": "5",
+        "title": "Pokemon Scarlet"
+      }
+    ]
+  }
+}
+
+// Operation
+query ExampleQuery($id: ID!) {
+  game(id: $id) {
+    platform
+    id,title
+  }
+}
+
+//Variable
+
+{
+  "id":"3"
+}
+
+// Response
+
+{
+  "data": {
+    "game": {
+      "platform": [
+        "Switch"
+      ],
+      "id": "1",
+      "title": "Zelda, Tears of the Kingdom"
+    }
+  }
+}
+
+// Operation
+
+query ExampleQuery($id: ID!) {
+  author(id: $id) {
+    name
+    id,verified
+  }
+}
+//Variable
+
+{
+  "id":"1"
+}
+
+// Response
+{
+  "data": {
+    "author": {
+      "name": "mario",
+      "id": "1",
+      "verified": true
+    }
+  }
+}
+
