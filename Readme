@@ -226,3 +226,111 @@ query ExampleQuery($id: ID!) {
     }
   }
 }
+
+// Operation: DeleteMutation
+
+mutation DeleteMutation($id: ID!){
+  deleteGame(id: $id) {
+    id,title,platform
+  }
+}
+
+{
+  "id":"3"
+}
+
+
+{
+  "data": {
+    "deleteGame": [
+      {
+        "id": "1",
+        "title": "Zelda, Tears of the Kingdom",
+        "platform": [
+          "Switch"
+        ]
+      },
+      {
+        "id": "3",
+        "title": "Elden Ring",
+        "platform": [
+          "PS5",
+          "Xbox",
+          "PC"
+        ]
+      },
+      {
+        "id": "4",
+        "title": "Mario Kart",
+        "platform": [
+          "Switch"
+        ]
+      },
+      {
+        "id": "5",
+        "title": "Pokemon Scarlet",
+        "platform": [
+          "PS5",
+          "Xbox",
+          "PC"
+        ]
+      }
+    ]
+  }
+}
+
+// Operation: AddMutation
+
+mutation AddMutation($game: AddGameInput!){
+  addGame(game: $game) {
+    id,title,platform
+  }
+}
+
+//Variable
+{  
+  "game":{
+     "title": "Hello world", "platform": ["Switch","CAr","Thar"] 
+}}
+
+// Response
+{
+  "data": {
+    "addGame": {
+      "id": "6636",
+      "title": "Hello world",
+      "platform": [
+        "Switch",
+        "CAr",
+        "Thar"
+      ]
+    }
+  }
+}
+
+// Operation: EditsMutation
+
+mutation EditMutation($edits: EditGameInput!,$id: ID!){
+  updateGame(edits: $edits,id:$id) {
+    title,platform
+  }
+}
+
+//Variable
+{  
+  "edits":{
+     "title": "a new Duniya" 
+}, "id": "2"}
+
+// Response
+{
+  "data": {
+    "updateGame": {
+      "title": "a new Duniya",
+      "platform": [
+        "PS5",
+        "Xbox"
+      ]
+    }
+  }
+}
