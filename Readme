@@ -109,3 +109,120 @@ query ExampleQuery($id: ID!) {
   }
 }
 
+
+// Operation
+
+query ExampleQuery($id: ID!) {
+  game(id: $id) {
+    title,
+    platform,
+    reviews {
+      rating,
+      content
+    }
+  }
+}
+//Variable
+
+{
+  "id":"3"
+}
+
+// Response
+{
+  "data": {
+    "game": {
+      "title": "Elden Ring",
+      "platform": [
+        "PS5",
+        "Xbox",
+        "PC"
+      ],
+      "reviews": [
+        {
+          "rating": 7,
+          "content": "lorem ipsum"
+        }
+      ]
+    }
+  }
+}
+
+// Operation
+
+query ExampleQuery($id: ID!) {
+  review(id: $id) {
+    rating,
+   game {
+      title,
+      platform
+    },
+    author {
+      name,
+      verified
+    }
+  }
+}
+//Variable
+
+{
+  "id":"3"
+}
+
+// Response
+{
+  "data": {
+    "review": {
+      "rating": 7,
+      "game": {
+        "title": "Elden Ring",
+        "platform": [
+          "PS5",
+          "Xbox",
+          "PC"
+        ]
+      },
+      "author": {
+        "name": "peach",
+        "verified": true
+      }
+    }
+  }
+}
+
+// Operation
+
+query ExampleQuery($id: ID!) {
+  review(id: $id) {
+    rating,
+   game {
+      title,
+      reviews {
+        rating
+      }
+    },
+   
+  }
+}
+//Variable
+
+{
+  "id":"3"
+}
+
+// Response
+{
+  "data": {
+    "review": {
+      "rating": 7,
+      "game": {
+        "title": "Elden Ring",
+        "reviews": [
+          {
+            "rating": 7
+          }
+        ]
+      }
+    }
+  }
+}
